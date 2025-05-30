@@ -49,7 +49,13 @@ public class Server {
 
             while (true) {
                 Socket client = serverSocket.accept();
-                new Thread(() -> handleCommand(client)).start();
+                new Thread(() -> {
+                    try {
+                        handleCommand(client);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).start();
             }
 
 
@@ -61,7 +67,7 @@ public class Server {
 
     }
 
-    private static void handleCommand(Socket client) {
+    private static void handleCommand(Socket client) throws IOException {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
              PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(client.getOutputStream())), true)) {
             Integer clientsNumber = new ConnectionCounter().getDetails();
@@ -81,6 +87,8 @@ public class Server {
                     out.println("Goodbye!");
                     activeConnections.remove(clientsNumber);
                     log.info("{}disconnected", activeConnections.get(clientsNumber));
+
+                    out.println("404");
                     break;
                 }
 
@@ -93,6 +101,10 @@ public class Server {
 
         } catch (IOException e) {
             logErrorMessage(e);
+        }
+        finally {
+            client.close();
+
         }
     }
 

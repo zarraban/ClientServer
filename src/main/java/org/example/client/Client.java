@@ -22,6 +22,9 @@ public class Client implements Runnable {
                 try {
                     String content;
                     while ((content = in.readLine()) != null) {
+                        if(content.equalsIgnoreCase("404")){
+                            System.exit(0);
+                        }
                         System.out.println("Server: " + content);
                     }
                 } catch (IOException e) {

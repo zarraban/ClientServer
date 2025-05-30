@@ -32,3 +32,12 @@
 14:51:40.432 [Thread-1] INFO  org.example.server.Server [05.30-14:51:22]client 1 Message: How are you
 14:51:44.224 [Thread-0] INFO  org.example.client.Client Client: exit
 14:51:44.224 [Thread-1] INFO  org.example.server.Server nulldisconnected
+17:20:22.167 [main] INFO  org.example.server.Server Server started on 0.0.0.0 port:8080
+17:20:26.473 [Thread-1] INFO  org.example.server.Server [05.30-17:20:26]client 1 connected
+17:20:29.210 [Thread-1] INFO  org.example.server.Server [05.30-17:20:26]client 1 Message: hi
+17:20:32.111 [Thread-1] INFO  org.example.server.Server nulldisconnected
+17:22:35.584 [main] INFO  org.example.server.Server Server started on 0.0.0.0 port:8080
+17:22:46.512 [Thread-1] INFO  org.example.server.Server [05.30-17:22:46]client 1 connected
+17:22:51.383 [Thread-1] INFO  org.example.server.Server [05.30-17:22:46]client 1 Message: hi
+17:22:54.127 [Thread-1] INFO  org.example.server.Server [05.30-17:22:46]client 1 Message: 404
+17:22:58.122 [Thread-1] INFO  org.example.server.Server nulldisconnected
